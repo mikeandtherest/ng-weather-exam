@@ -14,7 +14,7 @@ import { getWithCache } from './cache.utils';
 })
 export class WeatherService {
 
-  static readonly URL = 'http://api.openweathermap.org/data/2.5';
+  static readonly URL = 'https://api.openweathermap.org/data/2.5';
   static readonly APPID = '5a4b2d457ecbef9eb2a71e480b947604';
   static readonly ICON_URL = 'https://raw.githubusercontent.com/udacity/Sunshine-Version-2/sunshine_master/app/src/main/res/drawable-hdpi/';
 
