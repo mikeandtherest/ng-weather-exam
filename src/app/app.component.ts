@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import {SwPush, SwUpdate} from '@angular/service-worker';
-import {interval} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import { setGlobalCacheDuration } from './cache.utils';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +9,6 @@ import {HttpClient} from '@angular/common/http';
 export class AppComponent {
 
     constructor() {
-
+      setGlobalCacheDuration(120); // 120 seconds
     }
 }

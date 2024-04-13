@@ -11,7 +11,7 @@
         - Min: {{dailyForecast.temp.min | number:'.0-0'}}
         - Max: {{dailyForecast.temp.max | number:'.0-0'}}
 
-        <img [src]="weatherService.getWeatherIcon(dailyForecast.weather[0].id)" class="icon">
+        <img [src]="weatherService.getWeatherIcon(dailyForecast.weather[0].id)" class="icon" alt="weather_icon">
       </li>
     </ul>
   </div>

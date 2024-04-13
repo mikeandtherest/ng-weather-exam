@@ -1,0 +1,38 @@
+.header-container {
+    display: flex;
+    gap: 2px;
+}
+
+.header-item {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: default;
+
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+
+    opacity: 0.7;
+}
+
+.header-item.active {
+    opacity: 1;
+}
+
+.header-item .close:hover {
+    color: #fff;
+    opacity: 0.8;
+    text-shadow: none;
+}
+
+.header-item .label {
+    margin-right: 5px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.header-item.close:focus {
+    outline: none;
+}

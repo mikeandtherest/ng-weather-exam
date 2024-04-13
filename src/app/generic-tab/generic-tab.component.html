@@ -1,0 +1,12 @@
+<div class="header-container">
+    <ng-container *ngFor="let tab of tabs">
+        <div *ngIf="!tab.closed" class="header-item" [ngClass]="{ 'active': tab === activeTab }" (click)="selectTab(tab)">
+            <span class="label">{{ tab.label }}</span>
+            <span class="close" (click)="closeTab(tab)">&times;</span>
+        </div>
+    </ng-container>
+</div>
+
+<div class="tab-content">
+    <ng-container *ngTemplateOutlet="activeTab?.template" />
+</div>
