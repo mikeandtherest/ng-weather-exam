@@ -13,7 +13,7 @@ let cacheDuration = 60 * 60 * 2; // 2 hours in seconds, by default
 export function getWithCache<T>(key: string): MonoTypeOperatorFunction<T> {
   return pipe(
     (source) => {
-      const cachedData = retrieveFromCache(key) as T;
+      const cachedData = retrieveFromCache<T>(key);
       if (cachedData) {
         console.log('data taken from cache', key, cachedData)
         return of(cachedData);
@@ -21,19 +21,19 @@ export function getWithCache<T>(key: string): MonoTypeOperatorFunction<T> {
 
       console.log('data taken from server', key)
       return source.pipe(
-        tap(data => storeInCache(key, data))
+        tap(data => storeInCache<T>(key, data))
       )
     }
   );
 }
 
-function retrieveFromCache(key: string): any {
+function retrieveFromCache<T>(key: string): T | null {
   const cacheEntryStr = localStorage.getItem(key);
   if (!cacheEntryStr) {
     return null;
   }
 
-  const cacheEntry: CacheEntry = JSON.parse(cacheEntryStr);
+  const cacheEntry: CacheEntry<T> = JSON.parse(cacheEntryStr);
   if (Date.now() - cacheEntry.timestamp > cacheDuration * 1000) {
     // cache expired so we remove it
     console.log('cache hit, but expired', key)
@@ -45,8 +45,8 @@ function retrieveFromCache(key: string): any {
   return cacheEntry.data;
 }
 
-function storeInCache(key: string, data: any) {
-  const cacheEntry: CacheEntry = {
+function storeInCache<T>(key: string, data: T) {
+  const cacheEntry: CacheEntry<T> = {
     timestamp: Date.now(),
     data: data
   };

@@ -11,7 +11,7 @@ import { debounceTime } from 'rxjs/operators';
 export class GenericTabComponent {
   @ContentChildren(TabItemComponent) tabs: QueryList<TabItemComponent>;
 
-  @Output() tabClose = new EventEmitter<any>();
+  @Output() tabClose = new EventEmitter<string>();
 
   activeTab: TabItemComponent;
 
